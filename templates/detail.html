@@ -57,6 +57,8 @@
                     <div class="borders"><p style="margin-right: 7px; display: inline;">border countries:</p> 
                         {% for detail in details%}
                         <a href="/country/{{detail}}" class="border cnt">{{detail}}</a>
+                        {% else %}
+                        none
                         {% endfor %}
                     </div>
                 </div>
