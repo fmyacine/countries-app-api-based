@@ -1,0 +1,68 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+
+{{countries[0]['name']['common']}}
+
+{% endblock %}
+
+
+{% block main %}
+
+    <div class="detail">
+        
+        <a href="/" class="back" id="button"><i class="fa-solid fa-arrow-left"></i> <p style="display: inline;">back</p></a>
+        {% for country in countries%}
+            
+            <div class="flex">
+                <div class="flag"> <img src="{{ country['flags']['png'] }}"> </div>
+                <div class="country">
+                    <h1>{{country['name']['common']}}</h1>
+                    <div class="details">
+                        <div class="details5">
+                            <p><span>Native name: </span>{{nativename}}</p>
+                            <p><span>population: </span>{{country['population']}}</p>
+                            <p><span>region: </span>{{country['region']}} </p>
+                            <p><span>sub region: </span>{{country["subregion"]}} </p>
+                            <p><span>capital: </span>
+                                {% if country["capital"]%}    
+                                    {{country["capital"][0]}}
+                                    {% for i in country['capital']%} 
+                                    {% if loop.index > 1 %}
+                                        , {{i}}
+                                    {% endif %}    
+                                    
+                                    {% endfor%}
+                                {% endif %}
+                            </p>
+                        </div>
+                        <div class="details3">
+                            <p><span>top level domain: </span>
+                                {% if country["topLevelDomain"] %}
+                                    {{country["topLevelDomain"]}}
+                                {% else%}
+                                    none 
+                                {%endif%}
+                            </p>
+                            <p><span>Currencies: </span>{{currency}} </p>
+                            <p><span>languages: </span>{{lan[0]}}
+                            {% for i in lan %}
+                                {% if loop.index > 1%}
+                                , {{i}}
+                                {% endif%}
+                            {% endfor %}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="borders"><p style="margin-right: 7px; display: inline;">border countries:</p> 
+                        {% for detail in details%}
+                        <a href="/country/{{detail}}" class="border cnt">{{detail}}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
+        </div>
+    <script src="../static/detail.js"></script>
+{% endblock %}

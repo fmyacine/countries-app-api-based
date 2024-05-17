@@ -1,0 +1,59 @@
+{% extends 'layout.html' %}
+{% block title %}
+Where In The World?
+{% endblock %}
+{% block main %}
+
+<div class="container-fluid content">
+    <div class="conthead">
+        
+        <div class="input">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input name="name" type="text" id="search" placeholder="Search for a country.." aria-label="Example text with button addon" aria-describedby="button-addon1">
+        </div>
+
+        <select class="region" name="region">
+            <option selected disabled hidden>Filter By Region..</option>
+            <option value="Africa">Africa</option>
+            <option value="America">America</option>
+            <option value="Asia">Asia</option>
+            <option value="Europe">Europe</option>
+            <option value="Oceania">Oceania</option>
+        </select>
+    </div>
+
+    <div class="grid">
+        {% if countries%}
+       
+        {% for country in countries %}
+        <div class="card">
+            <a href="/country/{{country['name']['common']}}"><img src="{{country['flags']['svg']}}" class="card-img-top" loading="lazy" ></a>
+            <div class="card-body">
+                <h5 class="card-title">{{country["name"]['common']}}</h5>
+                <p class="card-text mb-0"><span>Population: </span>{{country['population']}} </p>
+                <p class="card-text mb-0"><span>Region: </span>{{country['region'] }}</p>
+                <p class="card-text">
+                <span>Capital: </span>
+                    {% if country["capital"]%}    
+                        {{country["capital"][0]}}
+                        {% for i in country['capital']%} 
+                        {% if loop.index > 1 %}
+                            , {{i}}
+                        {% endif %}    
+                        
+                        {% endfor%}
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+        <h3>no result found!</h3>
+        {% endif %}
+    </div>
+    
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="../static/index.js"></script>
+
+{% endblock %}
