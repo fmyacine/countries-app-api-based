@@ -43,13 +43,13 @@ def details(country):
         lan.append(h['languages'][language[i]])    
     currency = list(h['currencies'])
     curr = h['currencies'][currency[0]]['name']
-
-    for border in h['borders']:
-        x = api_border(border)
-    
-        country_name = x[0]['name']['common']
-        countries.append(country_name)
-    
+    if 'borders' in h:
+        for border in h['borders']:
+            x = api_border(border)
+        
+            country_name = x[0]['name']['common']
+            countries.append(country_name)
+        
 
     return render_template('detail.html', details =countries  , countries = details, nativename= nativename,lan=lan,currency = curr)
 
