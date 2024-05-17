@@ -36,7 +36,10 @@ def details(country):
     h = details[0]
 
     language = list(h['languages'])
-    nativename = h['name']['nativeName'][language[0]]['common']
+    if language[0] in h['name']['nativeName']:
+        nativename = h['name']['nativeName'][language[0]]['common']
+    else:
+        nativename = 'Unknown'
 
     lan = []
     for i in range(len(language)):
