@@ -21,9 +21,26 @@
                     <div class="details">
                         <div class="details5">
                             <p><span>Native name: </span>{{nativename}}</p>
-                            <p><span>population: </span>{{country['population']}}</p>
-                            <p><span>region: </span>{{country['region']}} </p>
-                            <p><span>sub region: </span>{{country["subregion"]}} </p>
+                            <p><span>population: </span>
+                                {% if country['population'] %}
+                                    {{country['population']}}</p>
+                                {% else %}
+                                    Unknown!
+                                {% endif %}
+                            <p><span>region: </span>
+                                {% if country['region'] %}
+                                    {{country['region']}} 
+                                {% else %}
+                                    Unknown!
+                                {% endif %}
+                                </p>
+                            <p><span>sub region: </span>
+                                {% if countrey['subregion'] %}
+                                    {{country["subregion"]}} 
+                                {% else %}
+                                    Unknown!
+                                {% endif %}
+                                </p>
                             <p><span>capital: </span>
                                 {% if country["capital"]%}    
                                     {{country["capital"][0]}}
@@ -44,7 +61,11 @@
                                     none 
                                 {%endif%}
                             </p>
-                            <p><span>Currencies: </span>{{currency}} </p>
+                            <p><span>Currencies: </span>
+                                {% if currency %}
+                                    {{currency}} 
+                                {% endif %}
+                                </p>
                             <p><span>languages: </span>{{lan[0]}}
                             {% for i in lan %}
                                 {% if loop.index > 1%}
@@ -54,7 +75,7 @@
                             </p>
                         </div>
                     </div>
-                    <div class="borders"><p style="margin-right: 7px; display: inline;">border countries:</p> 
+                    <div class="borders"><p style="margin-right: 7px; display: inline; font-weight: 600;">border countries:</p> 
                         {% for detail in details%}
                         <a href="/country/{{detail}}" class="border cnt">{{detail}}</a>
                         {% else %}
