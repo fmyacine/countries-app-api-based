@@ -13,7 +13,7 @@
         
         <a href="/" class="back" id="button"><i class="fa-solid fa-arrow-left"></i> <p style="display: inline;">back</p></a>
         {% for country in countries%}
-            
+            {% if loop.index < 1 %}
             <div class="flex">
                 <div class="flag"> <img src="{{ country['flags']['png'] }}"> </div>
                 <div class="country">
@@ -84,7 +84,7 @@
                     </div>
                 </div>
             </div>
-
+            {% endif %}
             {% endfor %}
         </div>
     <script src="../static/detail.js"></script>
