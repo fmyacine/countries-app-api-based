@@ -1,8 +1,26 @@
 let button = document.getElementById("button")
 let DARK = document.querySelector(".d-flex p");
+let responseMode;
 
-button.addEventListener("click",()=>{
-    if(DARK.innerHTML === 'Light Mode'){
+document.addEventListener('DOMContentLoaded', (event) => {
+    const button = document.getElementById('button');
+    const DARK = document.querySelector('.d-flex p');
+
+    // Check for saved theme in localStorage
+    responseMode = localStorage.getItem('theme') || 'light';
+    changeColor(responseMode);
+
+    button.addEventListener('click', () => {
+        responseMode = (responseMode === 'dark') ? 'light' : 'dark';
+        changeColor(responseMode);
+        localStorage.setItem('theme', responseMode);
+        console.log("sdq")
+    });
+});
+function changeColor(){
+
+
+    if(responseMode === 'dark'){
 
         button.classList.remove('fa-regular');
         button.classList.add('fa-solid');
@@ -18,7 +36,10 @@ button.addEventListener("click",()=>{
         document.querySelector(".detail").style.backgroundColor = 'hsl(207, 26%, 17%)'
         document.body.style.backgroundColor = 'hsl(207, 26%, 17%)'
 
-        document.querySelector(".country").style.color = 'white';
+        document.querySelector("h3").style.color = 'white';
+        if(document.querySelector(".country")){
+            document.querySelector(".country").style.color = 'white';
+        }
         
 
         let borders = document.querySelectorAll(".border")
@@ -44,7 +65,10 @@ button.addEventListener("click",()=>{
         document.querySelector(".detail").style.backgroundColor = 'hsl(0, 0%, 98%)'
         document.body.style.backgroundColor = 'hsl(0, 0%, 98%)'
 
-        document.querySelector(".country").style.color = 'black';
+        document.querySelector("h3").style.color = 'black';
+        if(document.querySelector(".country")){
+            document.querySelector(".country").style.color = 'black';
+        }
         
 
         let borders = document.querySelectorAll(".border")
@@ -56,4 +80,4 @@ button.addEventListener("click",()=>{
     
     }
 
-});
+}
