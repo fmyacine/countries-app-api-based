@@ -276,4 +276,7 @@ p span{
     .cnt{
         margin-bottom: 25px;
     }
+    .d-flex p{
+        display: none;
+    }
   }
