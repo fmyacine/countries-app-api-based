@@ -15,7 +15,7 @@ def api_country(country):
 
         result = response.json()
         return result
-    except (KeyError, IndexError, ValueError,requests.exceptions.HTTPError):
+    except (KeyError, IndexError, ValueError,requests.exceptions.HTTPError,requests.exceptions.ConnectionError):
         return None
 
 def api_region(region):
@@ -32,7 +32,7 @@ def api_region(region):
         # Extract advice from response
         result = response.json()
         return result
-    except (KeyError, IndexError, ValueError):
+    except (KeyError, IndexError, ValueError,requests.exceptions.HTTPError,requests.exceptions.ConnectionError):
         return None
 
 def api_all():
@@ -49,7 +49,7 @@ def api_all():
         # Extract advice from response
         result = response.json()
         return result
-    except (KeyError, IndexError, ValueError):
+    except (KeyError, IndexError, ValueError,requests.exceptions.HTTPError,requests.exceptions.ConnectionError):
         return None
 
 def api_detail(name):
@@ -66,7 +66,7 @@ def api_detail(name):
         # Extract advice from response
         result = response.json()
         return result
-    except (KeyError, IndexError, ValueError):
+    except (KeyError, IndexError, ValueError,requests.exceptions.HTTPError,requests.exceptions.ConnectionError):
         return None
 
 
@@ -84,5 +84,5 @@ def api_border(name):
         # Extract advice from response
         result = response.json()
         return result
-    except (KeyError, IndexError, ValueError):
+    except (KeyError, IndexError, ValueError,requests.exceptions.HTTPError,requests.exceptions.ConnectionError):
         return None
