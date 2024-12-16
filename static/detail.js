@@ -35,8 +35,9 @@ function changeColor(){
         
         document.querySelector(".detail").style.backgroundColor = 'hsl(207, 26%, 17%)'
         document.body.style.backgroundColor = 'hsl(207, 26%, 17%)'
-
-        document.querySelector("h3").style.color = 'white';
+        if(document.querySelector("h3")){
+            document.querySelector("h3").style.color = 'white';
+        }
         if(document.querySelector(".country")){
             document.querySelector(".country").style.color = 'white';
         }
@@ -65,7 +66,10 @@ function changeColor(){
         document.querySelector(".detail").style.backgroundColor = 'hsl(0, 0%, 98%)'
         document.body.style.backgroundColor = 'hsl(0, 0%, 98%)'
 
-        document.querySelector("h3").style.color = 'black';
+        if(document.querySelector("h3")){
+            document.querySelector("h3").style.color = 'black';
+        }
+        
         if(document.querySelector(".country")){
             document.querySelector(".country").style.color = 'black';
         }
